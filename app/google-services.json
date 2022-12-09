@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "671250611150",
+    "project_id": "socios-cd-aliaga",
+    "storage_bucket": "socios-cd-aliaga.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671250611150:android:388a0419aff2bf4098c99f",
+        "android_client_info": {
+          "package_name": "com.cdaliaga.socios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671250611150-eigpvove79nc8hkhtq2r6cgb19db2i00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOQ4b1WsOP9M7fD6QTU8WuWaH4Tt1AstU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671250611150-eigpvove79nc8hkhtq2r6cgb19db2i00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
