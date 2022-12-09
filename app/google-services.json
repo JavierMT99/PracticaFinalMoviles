@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "671250611150",
+    "firebase_url": "https://socios-cd-aliaga-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "socios-cd-aliaga",
     "storage_bucket": "socios-cd-aliaga.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "671250611150-orvhqirhdsm0fbf644kja0d90juheq62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cdaliaga.socios",
+            "certificate_hash": "ecec3e84bd7c520245bae9de19910de52ad9665f"
+          }
+        },
         {
           "client_id": "671250611150-eigpvove79nc8hkhtq2r6cgb19db2i00.apps.googleusercontent.com",
           "client_type": 3

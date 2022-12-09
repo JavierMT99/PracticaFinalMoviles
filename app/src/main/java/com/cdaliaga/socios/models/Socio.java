@@ -5,6 +5,9 @@ public class Socio {
     private String nombre;
     private boolean pagado;
 
+    public Socio() {
+    }
+
     public Socio(int num, String nombre, boolean pagado) {
         this.num = num;
         this.nombre = nombre;
