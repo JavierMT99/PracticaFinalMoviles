@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -37,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
     static ArrayList<Socio> socios;
     private SocioListAdapter adaptador;
 
+    ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //Creamos la lista de socios
@@ -68,15 +69,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
 
-                // A new comment has been added, add it to the displayed list
-                System.out.println("Socio numero " + previousChildName);
-
+                //Creamos un nuevo objeto socio con todos los datos guardados en FireBase
                 Socio socio = new Socio();
                 socio.setNombre(dataSnapshot.child("nombre").getValue().toString());
-                //socio.setNum(Integer.parseInt(dataSnapshot.child("num").toString()));
-                //socio.setPagado((boolean)dataSnapshot.child("pagado").getValue());
-                socio.setNum(1);
-                socio.setPagado(true);
+                String numero = dataSnapshot.child("num").getValue().toString();
+                socio.setNum(Integer.parseInt(numero));
+                socio.setPagado((boolean)dataSnapshot.child("pagado").getValue());
+
 
                 socios.add(socio);
                 System.out.println(String.valueOf(socio.getNum()));
@@ -87,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
 
             }
 
@@ -107,9 +107,20 @@ public class MainActivity extends AppCompatActivity {
         };
 
         myRef.addChildEventListener(childEventListener);
+    }
 
-//        socios.add(new Socio(1, "prueba", true));
-//        socios.add(new Socio(1, "prueba", true));
-//        socios.add(new Socio(1, "prueba", true));
+    public void BuscarSocioNumero(View view) {
+
+        ArrayList<Socio> resultados = new ArrayList<Socio>();
+
+        for (int i = 0; i < socios.size(); i++) {
+            if(socios.get(i).getNombre().contains(binding.etNumero.getText().toString())){
+                resultados.add(socios.get(i));
+            }
+        }
+
+        adaptador = new Adaptador(resultados, this);
+        // 12 - Asignamos el adaptador al listView
+        lvSocios.setAdapter(adaptador);
     }
 }
