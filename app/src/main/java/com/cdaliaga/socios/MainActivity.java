@@ -38,11 +38,12 @@ public class MainActivity extends AppCompatActivity {
     static ArrayList<Socio> socios;
     private SocioListAdapter adaptador;
 
-    ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //Creamos la lista de socios
@@ -109,18 +110,22 @@ public class MainActivity extends AppCompatActivity {
         myRef.addChildEventListener(childEventListener);
     }
 
-    public void BuscarSocioNumero(View view) {
+    public ArrayList<Socio> BuscarSocioNumero(ArrayList<Socio> sociosFiltrados) {
 
         ArrayList<Socio> resultados = new ArrayList<Socio>();
 
-        for (int i = 0; i < socios.size(); i++) {
-            if(socios.get(i).getNum() == Integer.parseInt(binding.etNumero.getText().toString())){
-                resultados.add(socios.get(i));
+        for (int i = 0; i < sociosFiltrados.size(); i++) {
+            if(sociosFiltrados.get(i).getNum() == Integer.parseInt(binding.etNumero.getText().toString())){
+                resultados.add(sociosFiltrados.get(i));
             }
         }
 
-        //Mostramos de nuevo los resultados
-        adaptador = new SocioListAdapter(resultados, this);
+        return resultados;
+    }
+
+    public void FiltrarSocios(View view){
+        ArrayList<Socio> sociosFiltrados = BuscarSocioNumero(socios);
+        SocioListAdapter adaptador = new SocioListAdapter(sociosFiltrados, this);
         binding.lvLista.setAdapter(adaptador);
     }
 }
