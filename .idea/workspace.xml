@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Leer socios desde firebase realtime database">
+    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Leer socios desde firebase realtime database (completo)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" afterDir="false" />
     </list>
@@ -192,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670665919516</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Leer socios desde firebase realtime database (completo)">
+      <created>1670693040240</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670693040240</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +219,7 @@
     </ignored-roots>
     <MESSAGE value="Primera subida de un socio" />
     <MESSAGE value="Leer socios desde firebase realtime database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Leer socios desde firebase realtime database" />
+    <MESSAGE value="Leer socios desde firebase realtime database (completo)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Leer socios desde firebase realtime database (completo)" />
   </component>
 </project>

@@ -114,13 +114,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Socio> resultados = new ArrayList<Socio>();
 
         for (int i = 0; i < socios.size(); i++) {
-            if(socios.get(i).getNombre().contains(binding.etNumero.getText().toString())){
+            if(socios.get(i).getNum() == Integer.parseInt(binding.etNumero.getText().toString())){
                 resultados.add(socios.get(i));
             }
         }
 
-        adaptador = new Adaptador(resultados, this);
-        // 12 - Asignamos el adaptador al listView
-        lvSocios.setAdapter(adaptador);
+        //Mostramos de nuevo los resultados
+        adaptador = new SocioListAdapter(resultados, this);
+        binding.lvLista.setAdapter(adaptador);
     }
 }
