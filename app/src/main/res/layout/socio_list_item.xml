@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvNumero"
+        android:layout_width="100px"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="right"
+        android:textAlignment="gravity"
+        android:text="243"
+        android:layout_margin="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Pruebaaaaaaaaaaaaaaaaaaaaaa"
+        android:textSize="18dp"
+        android:textColor="@color/black"/>
+
+    <CheckBox
+        android:id="@+id/tbPagado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        />
+
+
+</LinearLayout>

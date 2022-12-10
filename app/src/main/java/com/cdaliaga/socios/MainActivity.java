@@ -1,13 +1,24 @@
 package com.cdaliaga.socios;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ListView;
 
+import com.cdaliaga.socios.adapters.SocioListAdapter;
+import com.cdaliaga.socios.databinding.ActivityMainBinding;
 import com.cdaliaga.socios.models.Socio;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,11 +35,20 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase database;
 
     static ArrayList<Socio> socios;
+    private SocioListAdapter adaptador;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        //Creamos la lista de socios
+        socios = new ArrayList<Socio>();
+
+        //Creamos el adaptador de la lista
+        adaptador = new SocioListAdapter(socios, this);
 
         // Obtain the FirebaseAnalytics instance.
         analytics = FirebaseAnalytics.getInstance(this);
@@ -40,83 +60,56 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("Socios","Aplicacion Iniciada");
         analytics.logEvent("Socios", bundle);
 
-        //Coger datos del csv y subirlos a firebase
-//        File file = new File(getFilesDir() + File.separator + "socios.csv");
-//
-//        socios = leerCSV();
-
-        DatabaseReference myRef = database.getReference();
-
-        Socio prueba = new Socio(1, "Prueba", true);
-
-        myRef = myRef.child("socios");
-        myRef.setValue(prueba);
-        System.out.println("User subido");
-
-//        for (int i = 0; i < socios.size(); i++) {
-//
-//        }
-
-    }
-
-    public ArrayList<Socio> leerCSV(){
-
-        BufferedReader br = null;
-        String line = "";
-        String separador = ",";
-
-        ArrayList<Socio> socios = new ArrayList<Socio>();
-
-        try {
-            br = new BufferedReader(new FileReader(new File(this.getFilesDir(), "/socios.csv")));
-
-            //saltamos la primera linea
-            br.readLine();
-
-            while ((line = br.readLine()) != null) {
+        //Coger datos de firebase
+        DatabaseReference myRef = database.getReference("socios");
 
 
-                String[] datos = line.split(separador);
-                ArrayList<String> datos1 = new ArrayList<String>();
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
 
-                for (int i = 0; i < datos.length; i++) {
-                    if(!datos[i].isEmpty()){
-                        datos1.add(datos[i]);
-                    }
-                }
-
-                //Guarda datos.
+                // A new comment has been added, add it to the displayed list
+                System.out.println("Socio numero " + previousChildName);
 
                 Socio socio = new Socio();
-
-                socio.setNum(Integer.parseInt(datos1.get(0)));
-                socio.setNombre(datos1.get(1));
-
-                if(datos1.get(2).equals("Pagado") ){
-                    socio.setPagado(true);
-                }else{
-                    socio.setPagado(false);
-                }
+                socio.setNombre(dataSnapshot.child("nombre").getValue().toString());
+                //socio.setNum(Integer.parseInt(dataSnapshot.child("num").toString()));
+                //socio.setPagado((boolean)dataSnapshot.child("pagado").getValue());
+                socio.setNum(1);
+                socio.setPagado(true);
 
                 socios.add(socio);
+                System.out.println(String.valueOf(socio.getNum()));
+
+                //Asignamos el adaptador al listView
+                binding.lvLista.setAdapter(adaptador);
             }
 
-            return socios;
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
-        }
 
-        return null;
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+
+        myRef.addChildEventListener(childEventListener);
+
+//        socios.add(new Socio(1, "prueba", true));
+//        socios.add(new Socio(1, "prueba", true));
+//        socios.add(new Socio(1, "prueba", true));
     }
 }
