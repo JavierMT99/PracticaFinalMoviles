@@ -92,13 +92,16 @@ public class MainActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
 
                 //Creamos un nuevo objeto socio con todos los datos guardados en FireBase
+                //(Esto se ejecuta cada vez que se añada una entrada nueva en la entrada de la base de
+                // datos "socios" y cuando se inicie la aplicación)
+
                 Socio socio = new Socio();
                 socio.setNombre(dataSnapshot.child("nombre").getValue().toString());
                 String numero = dataSnapshot.child("num").getValue().toString();
                 socio.setNum(Integer.parseInt(numero));
                 socio.setPagado((boolean)dataSnapshot.child("pagado").getValue());
 
-
+                //El socio nuevo lo añadimos a la lista
                 socios.add(socio);
                 System.out.println(String.valueOf(socio.getNum()));
 
@@ -108,13 +111,27 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //Actualizamos la información en la lista del socio que ha cambiado en la base de datos
+                socios.get(Integer.parseInt(snapshot.child("num").getValue().toString()) - 1).setNombre(snapshot.child("nombre").getValue().toString());
+                socios.get(Integer.parseInt(snapshot.child("num").getValue().toString()) - 1).setPagado((boolean)snapshot.child("pagado").getValue());
 
-
+                //Asignamos el adapartador para actualizar la listView
+                binding.lvLista.setAdapter(adaptador);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
+                //Si se elimina un socio en la base de datos, eliminamos el objeto de la lista de la app
+                int num = Integer.parseInt(snapshot.child("num").getValue().toString());
+                for (int i = 0; i < socios.size(); i++) {
+                    if(socios.get(i).getNum() == num){
+                        socios.remove(i);
+                    }
+                }
+
+                //Asignamos el adapartador para actualizar la listView
+                binding.lvLista.setAdapter(adaptador);
             }
 
             @Override
@@ -124,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                MostrarToastError();
             }
         };
 
@@ -221,23 +238,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SubirSocio(Socio socio){
+        //Funcion para subir el socio en la base de datos en una nueva entrada
         if(socio != null){
             try{
 
+                //Miramos los socios existentes en el momento previo a la subida
                 socio.setNum(socios.size() + 1);
 
+                //Creamos una nueva entrada en la referencia "socios" con el nuevo socio
                 DatabaseReference ref = database.getReference("socios");
-
                 ref.child(String.valueOf(socio.getNum())).setValue(socio);
 
+                //Damos feedback al usuario
                 Toast.makeText(this, String.valueOf(socio.getNum()), Toast.LENGTH_LONG).show();
-
             }catch (Exception e){
 
+                //Damos feedback de que no se ha podido realizar la subida
                 Toast.makeText(this, getString(R.string.add_new_socio_error), Toast.LENGTH_LONG).show();
             }
-        }else{
-            Toast.makeText(this, "El socio NO ha llegado", Toast.LENGTH_LONG).show();
         }
     }
 }
