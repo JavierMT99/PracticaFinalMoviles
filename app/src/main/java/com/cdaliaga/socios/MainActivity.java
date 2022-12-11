@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.cdaliaga.socios.adapters.SocioListAdapter;
 import com.cdaliaga.socios.databinding.ActivityMainBinding;
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                MostrarToastError();
             }
         };
 
@@ -186,5 +188,14 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Socio> sociosFiltrados = BuscarSocioPagado(BuscarSocioNombre(BuscarSocioNumero(socios)));
         SocioListAdapter adaptador = new SocioListAdapter(sociosFiltrados, this);
         binding.lvLista.setAdapter(adaptador);
+    }
+
+    private void MostrarToastError(){
+        Toast.makeText(this, getString(R.string.error_conexion), Toast.LENGTH_SHORT);
+    }
+
+    public void AbrirAñadirSocio(View view){
+        Intent intent = new Intent(this, AddSocioActivity.class);
+        startActivity(intent);
     }
 }

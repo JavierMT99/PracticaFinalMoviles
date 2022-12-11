@@ -3,4 +3,8 @@
     <string name="buscar">Buscar</string>
     <string name="pagado">Pagado</string>
     <string name="introduce_numero_socio">Número de socio</string>
+    <string name="error_conexion">Error al conectar a la base de datos, compruebe su conexión a internet.</string>
+    <string name="añadir_socio_nombre">Nombre del nuevo socio</string>
+    <string name="guardar">Guardar</string>
+    <string name="añadir_socio">Añadir socio</string>
 </resources>

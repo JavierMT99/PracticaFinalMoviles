@@ -9,9 +9,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Filtrar socios por numero y nombre">
+    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Filtrar socios por numero, nombre y pagado">
+      <change afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/AddSocioActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_socio.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/socio_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/socio_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +75,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Socios" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
@@ -75,6 +83,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Javi\AndroidStudioProjects\SociosAliaga\app" />
+    </key>
+    <key name="android.template.1039666312">
+      <recent name="com.cdaliaga.socios" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -220,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670745346717</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Filtrar socios por numero, nombre y pagado">
+      <created>1670746182831</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670746182831</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -243,6 +261,7 @@
     <MESSAGE value="Leer socios desde firebase realtime database (completo)" />
     <MESSAGE value="Filtrar socios por numero" />
     <MESSAGE value="Filtrar socios por numero y nombre" />
-    <option name="LAST_COMMIT_MESSAGE" value="Filtrar socios por numero y nombre" />
+    <MESSAGE value="Filtrar socios por numero, nombre y pagado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filtrar socios por numero, nombre y pagado" />
   </component>
 </project>
