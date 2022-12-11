@@ -64,12 +64,11 @@
                 />
 
             <Button
-                android:id="@+id/botonAñadir"
+                android:id="@+id/botonAnadir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/añadir_socio"
                 android:layout_marginHorizontal="40dp"
-                android:onClick="AbrirAñadirSocio"
                 android:layout_weight="0.5"/>
         </LinearLayout>
 

@@ -1,11 +1,17 @@
 package com.cdaliaga.socios;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -43,6 +49,17 @@ public class MainActivity extends AppCompatActivity {
     private SocioListAdapter adaptador;
 
     ActivityMainBinding binding;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(resultCode == 10)
+        {
+            SubirSocio(data.getExtras().getParcelable("socio"));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,11 +124,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                MostrarToastError();
+
             }
         };
 
         myRef.addChildEventListener(childEventListener);
+
+        binding.botonAnadir.setOnClickListener(v -> {
+            AbrirNuevoSocio();
+        });
     }
 
     public ArrayList<Socio> BuscarSocioNumero(ArrayList<Socio> sociosFiltrados) {
@@ -191,11 +212,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void MostrarToastError(){
-        Toast.makeText(this, getString(R.string.error_conexion), Toast.LENGTH_SHORT);
+        Toast.makeText(this, getString(R.string.error_conexion), Toast.LENGTH_LONG).show();
     }
 
-    public void AbrirAñadirSocio(View view){
-        Intent intent = new Intent(this, AddSocioActivity.class);
-        startActivity(intent);
+    private void AbrirNuevoSocio() {
+        Intent nuevoSocioIntent = new Intent(this, AddSocioActivity.class);
+        startActivityForResult(nuevoSocioIntent, 10);
+    }
+
+    public void SubirSocio(Socio socio){
+        if(socio != null){
+            try{
+
+                socio.setNum(socios.size() + 1);
+
+                DatabaseReference ref = database.getReference("socios");
+
+                ref.child(String.valueOf(socio.getNum())).setValue(socio);
+
+                Toast.makeText(this, String.valueOf(socio.getNum()), Toast.LENGTH_LONG).show();
+
+            }catch (Exception e){
+
+                Toast.makeText(this, getString(R.string.add_new_socio_error), Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(this, "El socio NO ha llegado", Toast.LENGTH_LONG).show();
+        }
     }
 }
