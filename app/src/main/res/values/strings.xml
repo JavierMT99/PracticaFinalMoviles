@@ -7,7 +7,9 @@
     <string name="añadir_socio_nombre">Nombre del nuevo socio</string>
     <string name="guardar">Guardar</string>
     <string name="añadir_socio">Añadir socio</string>
-    <string name="no_name">No puedes introducir un socio con el nombre vacío</string>
+    <string name="no_name">No puedes dejar un socio con el nombre vacío</string>
     <string name="add_new_socio_succes">Se ha añadido el socio correctamente</string>
     <string name="add_new_socio_error">No se ha podido añadir el nuevo socio</string>
+    <string name="socio_modify_success">Socio modificado con éxito</string>
+    <string name="socio_modify_error">No se pudo modificar el socio</string>
 </resources>

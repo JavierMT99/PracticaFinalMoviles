@@ -7,12 +7,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.Observable;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -86,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
         //Coger datos de firebase
         DatabaseReference myRef = database.getReference("socios");
 
+        binding.lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                AbrirEditarSocio(adaptador.getItem(i));
+            }
+        });
 
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
@@ -235,6 +242,12 @@ public class MainActivity extends AppCompatActivity {
     private void AbrirNuevoSocio() {
         Intent nuevoSocioIntent = new Intent(this, AddSocioActivity.class);
         startActivityForResult(nuevoSocioIntent, 10);
+    }
+
+    private void AbrirEditarSocio(Socio socio){
+        Intent editarSocioIntent = new Intent(this, AddSocioActivity.class);
+        editarSocioIntent.putExtra("socio", socio);
+        startActivity(editarSocioIntent);
     }
 
     public void SubirSocio(Socio socio){
