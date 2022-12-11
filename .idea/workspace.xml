@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Leer socios desde firebase realtime database (completo)">
+    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Filtrar socios por numero">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/socio_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/socio_list_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670693318908</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Filtrar socios por numero">
+      <created>1670694684399</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670694684399</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,6 +234,7 @@
     <MESSAGE value="Primera subida de un socio" />
     <MESSAGE value="Leer socios desde firebase realtime database" />
     <MESSAGE value="Leer socios desde firebase realtime database (completo)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Leer socios desde firebase realtime database (completo)" />
+    <MESSAGE value="Filtrar socios por numero" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filtrar socios por numero" />
   </component>
 </project>

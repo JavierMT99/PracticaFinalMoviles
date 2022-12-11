@@ -26,8 +26,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -114,17 +116,53 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Socio> resultados = new ArrayList<Socio>();
 
-        for (int i = 0; i < sociosFiltrados.size(); i++) {
-            if(sociosFiltrados.get(i).getNum() == Integer.parseInt(binding.etNumero.getText().toString())){
-                resultados.add(sociosFiltrados.get(i));
+        if(!binding.etNumero.getText().toString().isEmpty()){
+            for (int i = 0; i < sociosFiltrados.size(); i++) {
+                if(sociosFiltrados.get(i).getNum() == Integer.parseInt(binding.etNumero.getText().toString())){
+                    resultados.add(sociosFiltrados.get(i));
+                }
             }
+
+            return resultados;
         }
 
-        return resultados;
+        return sociosFiltrados;
+    }
+
+    public ArrayList<Socio> BuscarSocioNombre (ArrayList<Socio> sociosFiltrados){
+
+        ArrayList<Socio> resultados = new ArrayList<Socio>();
+
+        //Quitamos tildes del filtro
+        String busqueda = binding.eTextNombre.getText().toString();
+
+        //Si hay filtro por texto buscamos coincidencias
+        if(!busqueda.isEmpty()){
+
+            busqueda = Normalizer.normalize(busqueda, Normalizer.Form.NFD);
+            busqueda = busqueda.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+
+            for (int i = 0; i < sociosFiltrados.size(); i++) {
+
+                //Quitar tildes del nombre
+                String nombre = sociosFiltrados.get(i).getNombre();
+                nombre = Normalizer.normalize(nombre, Normalizer.Form.NFD);
+                nombre = nombre.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+
+                if(nombre.toLowerCase().contains(busqueda.toLowerCase())){
+                    resultados.add(sociosFiltrados.get(i));
+                }
+            }
+
+            return resultados;
+        }
+
+        //Sino hay filtro por texto devolvemos el array que nos llega igual
+        return sociosFiltrados;
     }
 
     public void FiltrarSocios(View view){
-        ArrayList<Socio> sociosFiltrados = BuscarSocioNumero(socios);
+        ArrayList<Socio> sociosFiltrados = BuscarSocioNombre(BuscarSocioNumero(socios));
         SocioListAdapter adaptador = new SocioListAdapter(sociosFiltrados, this);
         binding.lvLista.setAdapter(adaptador);
     }
