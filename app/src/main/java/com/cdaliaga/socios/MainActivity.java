@@ -161,8 +161,29 @@ public class MainActivity extends AppCompatActivity {
         return sociosFiltrados;
     }
 
+    public ArrayList<Socio> BuscarSocioPagado (ArrayList<Socio> sociosFiltrados){
+
+        ArrayList<Socio> resultados = new ArrayList<Socio>();
+
+        if(binding.tbPagado.isChecked()){
+            for (int i = 0; i < sociosFiltrados.size(); i++) {
+                if(sociosFiltrados.get(i).isPagado() == true){
+                    resultados.add(sociosFiltrados.get(i));
+                }
+            }
+            return resultados;
+        }else{
+            for (int i = 0; i < sociosFiltrados.size(); i++) {
+                if(sociosFiltrados.get(i).isPagado() == false){
+                    resultados.add(sociosFiltrados.get(i));
+                }
+            }
+            return resultados;
+        }
+    }
+
     public void FiltrarSocios(View view){
-        ArrayList<Socio> sociosFiltrados = BuscarSocioNombre(BuscarSocioNumero(socios));
+        ArrayList<Socio> sociosFiltrados = BuscarSocioPagado(BuscarSocioNombre(BuscarSocioNumero(socios)));
         SocioListAdapter adaptador = new SocioListAdapter(sociosFiltrados, this);
         binding.lvLista.setAdapter(adaptador);
     }
