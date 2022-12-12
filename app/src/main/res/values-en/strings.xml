@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MEMBERS ALIAGA S.C</string>
+    <string name="buscar">Search</string>
+    <string name="pagado">Paid</string>
+    <string name="introduce_numero_socio">Member\'s number</string>
+    <string name="error_conexion">Error connecting to the database, check your internet connection.</string>
+    <string name="añadir_socio_nombre">Name of new member</string>
+    <string name="guardar">Save</string>
+    <string name="añadir_socio">Add</string>
+    <string name="no_name">You cannot leave a partner with an empty name</string>
+    <string name="add_new_socio_error">New partner could not be added</string>
+    <string name="socio_modify_success">Successfully modified partner</string>
+    <string name="socio_modify_error">Could not modify the partner</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_delete">Yes, delete it</string>
+    <string name="cancel_delete">Cancel</string>
+    <string name="confirm_dialog_title">Confirm</string>
+    <string name="confirm_dialog_delete">¿Do you want delete the member?</string>
+    <string name="socio_remove_success">Member removed correctly</string>
+    <string name="socio_remove_error">Member removed</string>
+    <string name="add_new_socio_success">The partner has been added correctly</string>
+    <string name="splash_screen">MEMBERS ALIAGA S.C</string>
+    <string name="member_name">Member\'s name</string>
+</resources>

@@ -3,12 +3,10 @@
     <string name="buscar">Buscar</string>
     <string name="pagado">Pagado</string>
     <string name="introduce_numero_socio">Número de socio</string>
-    <string name="error_conexion">Error al conectar a la base de datos, compruebe su conexión a internet.</string>
     <string name="añadir_socio_nombre">Nombre del nuevo socio</string>
     <string name="guardar">Guardar</string>
     <string name="añadir_socio">Añadir</string>
     <string name="no_name">No puedes dejar un socio con el nombre vacío</string>
-    <string name="add_new_socio_succes">Se ha añadido el socio correctamente</string>
     <string name="add_new_socio_error">No se ha podido añadir el nuevo socio</string>
     <string name="socio_modify_success">Socio modificado con éxito</string>
     <string name="socio_modify_error">No se pudo modificar el socio</string>
@@ -21,4 +19,6 @@
     <string name="socio_remove_error">Socio eliminado</string>
     <string name="add_new_socio_success">Socio añadido con éxito</string>
     <string name="splash_screen">C.D ALIAGA SOCIOS</string>
+    <string name="error_conexion">Error al conectar a la base de datos, compruebe su conexión a internet.</string>
+    <string name="member_name">Nombre de socio</string>
 </resources>
