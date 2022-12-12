@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:orientation = "vertical">
+        android:orientation = "vertical"
+        android:background="@color/yellow"
+        >
+
 
         <EditText
             android:id="@+id/eTextNombre"
@@ -25,7 +28,8 @@
             android:id="@+id/filtersLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <CheckBox
                 android:checked="true"
@@ -51,16 +55,20 @@
             android:id="@+id/btnsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
 
             <Button
                 android:id="@+id/botonBuscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/buscar"
-                android:layout_marginHorizontal="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="30dp"
                 android:onClick="FiltrarSocios"
-                android:layout_weight="0.6"
+                android:layout_weight="0.8"
                 />
 
             <Button
@@ -68,14 +76,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/añadir_socio"
-                android:layout_marginHorizontal="40dp"
-                android:layout_weight="0.5"/>
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="0.7"/>
         </LinearLayout>
-
-        <ListView
-            android:id="@+id/lvLista"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <ListView
+                android:id="@+id/lvLista"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
     </LinearLayout>
 </layout>
