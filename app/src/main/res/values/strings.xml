@@ -12,4 +12,11 @@
     <string name="add_new_socio_error">No se ha podido añadir el nuevo socio</string>
     <string name="socio_modify_success">Socio modificado con éxito</string>
     <string name="socio_modify_error">No se pudo modificar el socio</string>
+    <string name="delete">Eliminar</string>
+    <string name="confirm_delete">Sí, eliminar</string>
+    <string name="cancel_delete">Cancelar</string>
+    <string name="confirm_dialog_title">Confirmar</string>
+    <string name="confirm_dialog_delete">¿Deseas eliminar el socio?</string>
+    <string name="socio_remove_success">Socio eliminado correctamente</string>
+    <string name="socio_remove_error">Socio eliminado</string>
 </resources>

@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase database;
 
     static ArrayList<Socio> socios;
+    static ArrayList<Socio> sociosFiltrados;
     private SocioListAdapter adaptador;
 
     ActivityMainBinding binding;
@@ -71,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         //Creamos la lista de socios
         socios = new ArrayList<Socio>();
 
+        //Creamos la lista de socios filtrados
+        sociosFiltrados = socios;
+
         //Creamos el adaptador de la lista
         adaptador = new SocioListAdapter(socios, this);
 
@@ -90,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         binding.lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                AbrirEditarSocio(adaptador.getItem(i));
+                AbrirEditarSocio(sociosFiltrados.get(i));
             }
         });
 
@@ -118,10 +122,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //Actualizamos la información en la lista del socio que ha cambiado en la base de datos
-                socios.get(Integer.parseInt(snapshot.child("num").getValue().toString()) - 1).setNombre(snapshot.child("nombre").getValue().toString());
-                socios.get(Integer.parseInt(snapshot.child("num").getValue().toString()) - 1).setPagado((boolean)snapshot.child("pagado").getValue());
 
+                //Actualizamos la información en la lista del socio que ha cambiado en la base de datos
+                int num = Integer.parseInt(snapshot.child("num").getValue().toString());
+                for (int i = 0; i < socios.size(); i++) {
+                    if(socios.get(i).getNum() == num){
+                        socios.get(i).setNombre(snapshot.child("nombre").getValue().toString());
+                        socios.get(i).setPagado((boolean)snapshot.child("pagado").getValue());
+                    }
+                }
                 //Asignamos el adapartador para actualizar la listView
                 binding.lvLista.setAdapter(adaptador);
             }
@@ -231,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void FiltrarSocios(View view){
         ArrayList<Socio> sociosFiltrados = BuscarSocioPagado(BuscarSocioNombre(BuscarSocioNumero(socios)));
+        this.sociosFiltrados = sociosFiltrados;
         SocioListAdapter adaptador = new SocioListAdapter(sociosFiltrados, this);
         binding.lvLista.setAdapter(adaptador);
     }

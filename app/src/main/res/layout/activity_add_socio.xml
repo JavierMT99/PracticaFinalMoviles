@@ -18,6 +18,7 @@
             android:id="@+id/edNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:hint="@string/añadir_socio_nombre"
             />
         <CheckBox
@@ -36,6 +37,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/guardar"/>
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_marginTop="16dp"
+            android:layout_width="400px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/red"
+            android:text="@string/delete"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 </layout>
