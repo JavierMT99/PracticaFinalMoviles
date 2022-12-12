@@ -9,21 +9,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Cambios visuales">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/SplashScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/aliaga.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash_screen.xml" afterDir="false" />
+    <list default="true" id="733dd3cc-211e-41ba-ab61-2bb4e3424356" name="Changes" comment="Splash Screen">
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cdaliaga/socios/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Javi\.android\avd\Emulador.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RF8N71MX4EH]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -75,7 +72,7 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/DesarrolloMoviles/PMDM2022-main/06_ListaSimple_y_Splash" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/DesarrolloMoviles/PMDM2022-main/13_SharedPreferences_Login" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
   </component>
   <component name="RecentsManager">
@@ -291,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670807526833</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Splash Screen">
+      <created>1670833927505</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670833927505</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -322,6 +326,7 @@
     <MESSAGE value="Eliminar socio de la base de datos" />
     <MESSAGE value="Bug al añadir un socio nuevo (FIXED)" />
     <MESSAGE value="Cambios visuales" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios visuales" />
+    <MESSAGE value="Splash Screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Splash Screen" />
   </component>
 </project>

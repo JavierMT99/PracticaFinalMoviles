@@ -67,7 +67,6 @@
                 android:text="@string/buscar"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="30dp"
-                android:onClick="FiltrarSocios"
                 android:layout_weight="0.8"
                 />
 

@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.Observable;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -63,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
             SubirSocio(data.getExtras().getParcelable("socio"));
 
         }
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        GuardarFiltros();
+
     }
 
     @Override
@@ -150,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Asignamos el adapartador para actualizar la listView
                 binding.lvLista.setAdapter(adaptador);
+
             }
 
             @Override
@@ -168,6 +178,18 @@ public class MainActivity extends AppCompatActivity {
         binding.botonAnadir.setOnClickListener(v -> {
             AbrirNuevoSocio();
         });
+
+        binding.botonBuscar.setOnClickListener(v ->{
+            FiltrarSocios();
+        });
+
+        //Cogemos los datos de los filtros del shared preferences si los hay
+        SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+
+        binding.eTextNombre.setText(preferencias.getString("nombre", ""));
+        binding.etNumero.setText(preferencias.getString("num", ""));
+        binding.tbPagado.setChecked(Boolean.parseBoolean(preferencias.getString("pagado","false")));
+
     }
 
     public ArrayList<Socio> BuscarSocioNumero(ArrayList<Socio> sociosFiltrados) {
@@ -240,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void FiltrarSocios(View view){
+    public void FiltrarSocios(){
         ArrayList<Socio> sociosFiltrados = BuscarSocioPagado(BuscarSocioNombre(BuscarSocioNumero(socios)));
         this.sociosFiltrados = sociosFiltrados;
         SocioListAdapter adaptador = new SocioListAdapter(sociosFiltrados, this);
@@ -280,5 +302,15 @@ public class MainActivity extends AppCompatActivity {
             //Damos feedback de que no se ha podido realizar la subida
             Toast.makeText(this, getString(R.string.add_new_socio_error), Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void GuardarFiltros() {
+        SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor Obj_editor = preferencias.edit();
+
+        Obj_editor.putString("nombre",binding.eTextNombre.getText().toString());
+        Obj_editor.putString("num",binding.etNumero.getText().toString());
+        Obj_editor.putString("pagado", String.valueOf(binding.tbPagado.isChecked()));
+        Obj_editor.commit();
     }
 }
