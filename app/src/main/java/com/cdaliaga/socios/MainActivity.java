@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
         // check if the request code is same as what is passed  here it is 2
         if(resultCode == 10)
         {
+
             SubirSocio(data.getExtras().getParcelable("socio"));
+
         }
     }
 
@@ -262,23 +264,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void SubirSocio(Socio socio){
         //Funcion para subir el socio en la base de datos en una nueva entrada
-        if(socio != null){
-            try{
+        try{
+            //Miramos los socios existentes en el momento previo a la subida
+            int num = socios.get(socios.size() - 1).getNum() + 1;
+            socio.setNum(num);
 
-                //Miramos los socios existentes en el momento previo a la subida
-                socio.setNum(socios.size() + 1);
+            //Creamos una nueva entrada en la referencia "socios" con el nuevo socio
+            DatabaseReference ref = database.getReference("socios");
+            ref.child(String.valueOf(socio.getNum())).setValue(socio);
 
-                //Creamos una nueva entrada en la referencia "socios" con el nuevo socio
-                DatabaseReference ref = database.getReference("socios");
-                ref.child(String.valueOf(socio.getNum())).setValue(socio);
+            //Damos feedback al usuario
+            Toast.makeText(this, getString(R.string.add_new_socio_success), Toast.LENGTH_LONG).show();
+        }catch (Exception e){
 
-                //Damos feedback al usuario
-                Toast.makeText(this, String.valueOf(socio.getNum()), Toast.LENGTH_LONG).show();
-            }catch (Exception e){
-
-                //Damos feedback de que no se ha podido realizar la subida
-                Toast.makeText(this, getString(R.string.add_new_socio_error), Toast.LENGTH_LONG).show();
-            }
+            //Damos feedback de que no se ha podido realizar la subida
+            Toast.makeText(this, getString(R.string.add_new_socio_error), Toast.LENGTH_LONG).show();
         }
     }
 }

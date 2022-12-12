@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
+import java.sql.SQLOutput;
 
 public class AddSocioActivity extends AppCompatActivity {
 
@@ -81,7 +82,9 @@ public class AddSocioActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.no_name), Toast.LENGTH_SHORT).show();
             return;
         }else{
+
             if(!getIntent().hasExtra("socio")){
+
                 //Si el campo nombre esta lleno entonces creamos un socio.
                 Socio socio = new Socio();
 
@@ -93,6 +96,7 @@ public class AddSocioActivity extends AppCompatActivity {
                 intent.putExtra("socio", socio);
                 setResult(10, intent);
                 finish();
+
             }else{
                 //Editamos el socio
                 Socio socio = getIntent().getExtras().getParcelable("socio");
