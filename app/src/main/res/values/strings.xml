@@ -20,4 +20,5 @@
     <string name="socio_remove_success">Socio eliminado correctamente</string>
     <string name="socio_remove_error">Socio eliminado</string>
     <string name="add_new_socio_success">Socio añadido con éxito</string>
+    <string name="splash_screen">C.D ALIAGA SOCIOS</string>
 </resources>
